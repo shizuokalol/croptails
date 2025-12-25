@@ -1,8 +1,11 @@
+# Handles all player input events globally
 class_name GameInputEvents
 
+# Stores the current movement direction
 static var direction: Vector2
 
 
+# Detects movement input and returns the direction
 static func movement_input() -> Vector2:
 	if Input.is_action_pressed("walk_left"):
 		direction = Vector2.LEFT
@@ -18,6 +21,7 @@ static func movement_input() -> Vector2:
 	return direction
 
 
+# Checks if there is any movement input
 static func is_movement_input() -> bool:
 	if direction == Vector2.ZERO:
 		return false
@@ -25,6 +29,7 @@ static func is_movement_input() -> bool:
 		return true
 
 
+# Checks if the tool action (hit) was pressed
 static func use_tool() -> bool:
 	var use_tool_value: bool = Input.is_action_just_pressed("hit")
 	

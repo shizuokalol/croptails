@@ -1,7 +1,9 @@
+# Water state - player is watering crops
 extends NodeState
 
-
+# Reference to the player character
 @export var player: Player
+# Reference to the sprite animation handler
 @export var animated_sprite_2d: AnimatedSprite2D
 
 
@@ -13,11 +15,13 @@ func _on_physics_process(_delta: float) -> void:
 	pass
 
 
+# Return to idle once the animation finishes
 func _on_next_transitions() -> void:
 	if !animated_sprite_2d.is_playing():
 		transition.emit("Idle")
 
 
+# Play the watering animation in the direction the player is facing
 func _on_enter() -> void:
 	if player.player_direction == Vector2.LEFT:
 		animated_sprite_2d.play("watering_left")
